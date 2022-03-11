@@ -118,6 +118,7 @@ table {
 						<tr class="selected">
 
 							<td><%=tmp + 1%></td>
+							
 							<td class="d-none"><%=set1.getInt("emp_id")%></td>
 							<!-- it will not visible beacuse its not permitted to updated -->
 							<td><%=set1.getString("emp_name")%></td>
@@ -131,9 +132,9 @@ table {
 									data-bs-whatever="@mdo">Edit</button>
 							</td>
 							<!--  <td><button	class="btn btn-outline-secondary text-uppercase">edit</button></td>-->
-							<td><form action="srvDelete" method="get">
-									<input id="idD" name="emp_Id" class="d-none">
-									<button id="btnDelete"
+							<td><form action="srvDelete? method="get">
+									<input type="hidden"id="idD" name="emp_Id" class="d-none" value="<%=set1.getInt("emp_id") %>"> 
+									<button  type="submit"
 										class="btn btn-outline-danger text-uppercase">Delete</button>
 								</form></td>
 							<br>
@@ -229,12 +230,12 @@ table {
 			
 		});
 		
-		$("#myTable").on('click', '#btnDelete', function() {
+	/* 	$("#myTable").on('click', '#btnDelete', function() {
 			let currentRow = $(this).closest("tr");
 			let id = currentRow.find("td:eq(1)").text();
 			$("#idD").val(id);
 
-		});
+		}); */
 		
 
 		/*

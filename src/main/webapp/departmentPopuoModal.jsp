@@ -4,8 +4,15 @@
 <%@include file="navbar.jsp"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="ISO-8859-1">
+<style>
+#sltColor
+{
+color:black;
+}
+</style>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -18,7 +25,7 @@
 	<form action="departmentwise.jsp" class="p-5" style="border: 1px solid black;">
 		     <label>Department:</label><br>
 		     <select name="department">
-			<option>Select Department</option>
+			<option id="sltColor">Select Department</option>
 			<%
           Class.forName("com.mysql.jdbc.Driver");
 										Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee_manager", "root", "");
@@ -28,7 +35,7 @@
 										while (resultset.next()) {
 											%>
 
-			<option value="<%=resultset.getString("department")%>"><%=resultset.getString("department")%></option>
+			<option style="color:black!important" value="<%=resultset.getString("department")%>"><%=resultset.getString("department")%></option>
 			<%
 											}
 										 %>

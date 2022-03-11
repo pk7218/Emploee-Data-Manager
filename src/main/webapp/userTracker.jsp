@@ -5,6 +5,6 @@
 String userVarification = (String) usertracker.getAttribute("user");
   if(userVarification==null)
   {
-	  response.sendRedirect("login.html");
+	  response.sendRedirect("NewLogin.html");
   }
 %>

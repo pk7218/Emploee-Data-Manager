@@ -35,8 +35,9 @@ public class AuthUser extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		 RequestDispatcher r=request.getRequestDispatcher("CatcheDistroyer");
+		 r.include(request, response);
 		 response.setContentType("text/html");
-		 
 		String usr=request.getParameter("user");
 		String pwd=request.getParameter("password");
 		int cnt=validateuser(usr, pwd);
@@ -49,9 +50,12 @@ public class AuthUser extends HttpServlet {
 		}
 		else	
 		{
-			response.getWriter().write("<h2 style='border:1px solid #fff; margin:10px; color:black;text-align:center;margin:10px margin-top:15px;;padding:10px;'> Invalid credential.!</h2>");
-			RequestDispatcher rd = request.getRequestDispatcher("login.html");
+			response.getWriter().write("<h2 id=\"msg\" style='border:1px solid #fff; margin:10px; color:black;text-align:center;margin:10px margin-top:15px;;padding:10px; display:flex; align-item=center;'> Invalid credential.!</h2></div>");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("NewLogin.html");
+			
 			rd.include(request, response);
+			
 
 		}
 	}

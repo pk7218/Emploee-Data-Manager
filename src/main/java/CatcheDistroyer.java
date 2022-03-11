@@ -1,26 +1,23 @@
 
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class SessionDestroy
+ * Servlet implementation class CatcheDistroyer
  */
-@WebServlet("/SessionDestroy")
-public class SessionDestroy extends HttpServlet {
+@WebServlet("/CatcheDistroyer")
+public class CatcheDistroyer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SessionDestroy() {
+    public CatcheDistroyer() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,29 +25,20 @@ public class SessionDestroy extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		response.setHeader("Pragma", "No-cache");
+		response.setHeader("Cache-Control", "no-store");
+		
+	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
-    }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 
-	 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-		
-	 HttpSession s=request.getSession(false);
-		if(s!=null)
-		{
-			s.invalidate();
-			RequestDispatcher rd=request.getRequestDispatcher("NewLogin.html");
-			rd.forward(request, response);
-		}
-		else
-		{
-			response.sendRedirect("login.html");			
-		}
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Login</title>
+    <style>
+        .container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #42BBFC;
+            background-position: center;           
+        }
+
+        .form-box {
+
+            width: 380px;
+            height: 480px;
+            position: relative;
+            margin: 6% auto;
+            background: #fff;
+            padding: 5px;
+            /* padding-left: 20px; */
+            overflow: hidden;
+            border-radius:12px;
+        }
+     
+
+        .button-box {
+            display: flex;
+            width: 220px;
+            margin: 35px auto;
+            position: relative;
+            box-shadow: 0 0 20px 9px #ff61241f;
+            border-radius: 30px;
+        }
+
+  .toggle-btn
+{
+padding: 10px 30px;
+cursor: pointer;
+background: transparent;
+border: 0;
+outline: none;
+position:relative;
+
+} 
+#btn
+{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right ,#e2e9cd,#e6ff06);
+    border-radius: 30px;
+    transition: .5s;
+
+}
+/* .social-icons
+{
+margin: 30px auto;
+margin: 0 12px;
+box-shadow:0 0 20px 0 
+
+} */
+.input-group
+{
+
+    top:180px;
+    position: absolute;
+    width:280px;
+    transition: .5s;
+   
+}
+.input-field
+{
+
+    width:100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+.submit-btn
+{
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background:linear-gradient(to right ,#e2e9cd,#e6ff06);
+    border:0;
+    outline: none;
+    margin-top: 25px;
+    border-radius:30px;
+
+}
+#login
+{
+    left: 50px;
+}
+#register
+{
+    left: 450px;
+}
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">Login In</button>
+                <button type="button" class="toggle-btn" onclick="register()">Register</button>
+            </div>
+            <form  action="AuthUser" method="post" class="input-group"  id="login" >
+               <input type="text" name="user" class="input-field input" placeholder="E-mail Id" required>
+               <input type="password" name="password" class="input-field" placeholder="Password" required>
+               <!-- <input type="checkbox" class="check-box" placeholder="User Id" required><span></span> -->
+               <input type="submit" class="submit-btn" value="Log in">
+            </form>
+
+            <form  action="AddUser" method="post" class="input-group" id="register">
+                 <input type="text" name="name" class="input-field" placeholder="Enter Name" required>
+                <input type="text" name="email" class="input-field" placeholder="Email Id" required>
+                <input type="text" name="mobile" class="input-field" placeholder="Enter Mobile" required>
+                <input type="text"  name="password"class="input-field" placeholder="Enter Password" required>
+                <input type="password" class="input-field" placeholder=" Confirm Password" required>
+             
+                <button type="submit" class="submit-btn"> Register</button>
+             </form>
+
+
+        </div>
+        
+    </div>
+
+
+    <script>
+
+        var x =document.getElementById("login");
+        var y =document.getElementById("register");
+        var z =document.getElementById("btn");
+
+        function register()
+        {
+           x.style.left="-400px";
+           y.style.left="50px";
+           z.style.left="110px";
+        }
+        function login()
+        {
+           x.style.left="50px";
+           y.style.left="450px";
+           z.style.left="0";
+        }
+       function  close() 
+       {
+    	   document.getElementById("btcls").style.display="none";
+    	   document.getElementById("msg").style.display="none";
+       }
+    </script>
+</body>
+
+</html>

@@ -6,7 +6,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	<%@ include file="userTracker.jsp" %>
-	
+	<style>
+  ::placehoder
+  {
+  color:#FFF;
+  opacity: 1;
+  }
+</style>
 
 <head>
 
@@ -34,10 +40,23 @@
 						href="index.jsp">Home</a></li>
 					<li class="nav-item"><a class="nav-link active"
 						href="EmployeeData.jsp">Employee</a></li>
-					<li class="nav-item"><a class="nav-link active"
-						href="AddEmployee.jsp">Add Employee</a></li>
+						
+						<li class="nav-item"><a class="nav-link active"
+						href="AdminAproval.jsp">Admin User</a></li>
+						
+					<!-- <li class="nav-item"><a class="nav-link active"
+						href="AddEmployee.jsp">Add Employee</a></li> -->
 					<li class="nav-item"><a class="nav-link active"
 						href="MonthWise.jsp">MonthWise(salary)</a></li>
+					<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Master Module
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Add Dapartment</a></li>
+            <li><a class="dropdown-item" href="AddEmployee.jsp">Add Employee</a></li>
+          </ul>
+        </li>
 					<li class="nav-item">
 					<form action="departmentPopuoModal.jsp">
 						<button type="submit" class="btn btn-dark btn-update"

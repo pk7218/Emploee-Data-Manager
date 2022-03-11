@@ -30,6 +30,10 @@ alert(Records Saved.!);
 span {
 	color: red;
 }
+
+.label {
+	margin-top: 4px;
+}
 </style>
 
 </head>
@@ -38,8 +42,8 @@ span {
 		<div class="hero">
 			<fieldset style="border: 1px solid white; padding: 18px;">
 				<legend style="margin-top: -20px;">Employee Details </legend>
-				<form action="srvAddEmployee" method="get">
-					<div class="row">
+				<form id ="frm"action="srvAddEmployee" method="get">
+					<div class="row ">
 						<div class="input-grp mt-3">
 							<input type="text" class="input mt-1" id="name" name="name"
 								style="border: 1px solid black; color: #000;" required>
@@ -56,8 +60,9 @@ span {
 						</div>
 
 						<div class="input-grp mt-3">
-							<input type="text" class="input mt-1" id="mobile" name="mobile_no"
-								style="border: 1px solid black; color: #000;" required>
+							<input type="text" class="input mt-1" id="mobile"
+								name="mobile_no" style="border: 1px solid black; color: #000;"
+								required>
 							<p id="error_mobile"></p>
 							<label for="mobile" class="label"
 								style="color: black; margin-left: 7px;">Mobile No.<span>*</span></label>
@@ -71,9 +76,9 @@ span {
 								style="color: black; margin-left: 7px;">Salary<span>*</span></label>
 						</div>
 						<div class="input-grp mt-3">
-							<select name="gender" class="mt-1"
+							<select name="gender" id="gender" class="mt-1"
 								style="border: 1px solid black; color: #000;">
-								<option>Select Gender<span style="color: red;">*</span></option>
+								<option value="No">Select Gender<span style="color: red;">*</span></option>
 								<option value="Male">Male</option>
 								<Option value="Female">Female</Option>
 							</select>
@@ -121,7 +126,7 @@ span {
 	 * 
 	 */
 	 $(document).ready(function() {
-	     var flg=true;
+	     var flg=false;
 	    $('#name').focusout(function(){
 
 	        var empName=$(this).val();
@@ -135,6 +140,7 @@ span {
 	           {
 	           
 	            	  hide('#error_name','#name');
+	            	  
 	           
 	          }
 	          else{
@@ -147,7 +153,6 @@ span {
 	    });
 	    
 	   $('#name').on('input',function(){
-
 	        var empName=$(this).val();
 	        if(empName.length<1)
 	        {
@@ -167,9 +172,6 @@ span {
 	           
 	        }
 	        }
-	        
-	        
-
 	    }); 
 	
 	    $('#dep').focusout(function(){
@@ -194,7 +196,7 @@ span {
 	        }
 	        }
 	    });
-	    
+	    /*  */
 	    $('#dep').on('input',function(){
 	        var empName=$(this).val();
 	        if(empName.length<1)
@@ -215,11 +217,9 @@ span {
 	           
 	        }
 	        }
-	        
-	        
-
 	    });
-	    
+	    /*  department validation*/
+	    /*salary validation  */
 	    $('#salary').focusout(function(){
 
 	        var empName=$(this).val();
@@ -229,11 +229,7 @@ span {
 	           
 	        }
 	        else {
-
-	           
 	            hide('#error_salary','#salary');
-	           
-	          
 	        }
 	    });
 	    
@@ -248,12 +244,15 @@ span {
 	        }
 
 	    });
-	    
-	    
-	    
+	    $('#salary').bind('keyup paste', function(){
+	        this.value = this.value.replace(/[^0-9.]/g, '');
+	  });
+	    /*salary validation  */
+	    /* mobile validation  */
 	    $('#mobile').focusout(function(){
 
 	        var empName=$(this).val();
+	        
 	        if(empName.length<1)
 	        {
 	            err_msg('This field is required.!','#error_mobile','#mobile')
@@ -290,20 +289,60 @@ span {
 	        }
 	    });
 	    
+	    $('#mobile').bind('keyup paste', function(){
+	        this.value = this.value.replace(/[^0-9]/g, '');
+	  });
+	    /* mobile validation */
 	    
+	    /* gender validation */
 	    
+	     $('#gender').focusout(function(){
+
+	        var gender=$(this).val();
+	        if(gender!="No")
+	        {
+	        	 hide('#error_gender','#gender');
+	        	
+	           
+	        }
+	        else {
+	        	err_msg('This field is required.!','#error_gender','#gender')
+	            	 
+	        }      
+	    });
+	    /*  $('#gender').on('input',function(){
+
+		        var gender=$(this).val();
+		        if(gender=="No")
+		        {
+		            err_msg('This field is required.!','#error_gender','#gender')
+		           
+		        }
+		        else {
+		            	  hide('#error_gender','#gender');
+		        }      
+		    }); */
 	    function err_msg(msg,eid,inputcolor){
 	    	 $(eid).text(msg).show();
-	    	 $(eid).css('color','red');
-	    	 $(inputcolor).css('border-color','red');
+	    	 $(eid).css('color','red').css('font-size','.8em');
+	    	 $(inputcolor).css('border-color','red'); 
 	         flg=false;
 	    }
 	    function hide(eid,inputcolor){
-	    	
 	        $(eid).hide();
-	        $(inputcolor).css('border-color','#000');
-	        flg=true;
+	       $(inputcolor).css('border-color','black');
+	        
 	    }
+	    
+	    function frmsubmit()
+	    {
+          if(flg && document.getElementById("name").val()!="" 
+        		  && document.getElementById("mobile").val()!=""
+        		 && document.getElementById("dep").val()!=""
+        		 && document.getElementById("salary").val()!=""
+        		 && document.getElementById("gender").val()!="No")
+        	  document.getElementById("frm").submit();
+	    } 
 
 	 });
 

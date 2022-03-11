@@ -4,13 +4,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+
+
 public class dao
 {
 	static String url=null,user,pass;
 	public dao(String url,String user,String pass) 
 	{
-		try {
+		try 
+		{
 			Class.forName("com.mysql.jdbc.Driver");
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -37,7 +42,10 @@ public class dao
 	 public ResultSet getData(String qry)
 	 {
 		 ResultSet s=null;
-	        try{ Class.forName("com.mysql.jdbc.Driver");
+	        try
+	        { 
+	         
+	         Class.forName("com.mysql.jdbc.Driver");
 			 Connection co=DriverManager.getConnection("jdbc:mysql://localhost/employee_manager","root","");
 	         PreparedStatement ps=co.prepareStatement(qry);
 	         s=ps.executeQuery();
@@ -45,7 +53,8 @@ public class dao
 	        }
 	        catch(Exception e)
 	        {
-	        	e.printStackTrace();        }
+	        	e.printStackTrace();        
+	        }
 	        finally
 	        {
 	        	
